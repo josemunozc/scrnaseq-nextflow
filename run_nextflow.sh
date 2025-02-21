@@ -8,8 +8,8 @@
 #SBATCH -o slurm/%J.out
 #SBATCH -e slurm/%J.err
 #SBATCH --job-name=NEXT
-#SBATCH --account=scw1001
-#SBATCH --reservation=training-nfcore-test-amd
+#SBATCH --account=scw2358
+#SBATCH --reservation=training-scrnaseq-20250224
 
 myDir=$(pwd)
 

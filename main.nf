@@ -88,6 +88,11 @@ process CRCOUNT {
 }
 
 process GENAGGR {
+    cpus params.genaggrJobCpus
+    executor 'slurm'
+    time params.genaggrLength
+    memory params.genaggrMemory
+
     tag "Generate aggr.csv file"
     publishDir params.outdir
 
@@ -106,6 +111,11 @@ process GENAGGR {
 }
 
 process AGGRCOUNT {
+    cpus params.aggrcountCpus
+    executor 'slurm'
+    time params.aggrcountLength
+    memory params.aggrcountMemory
+
     tag "Aggregate cellranger count results"
     publishDir params.outdir
 
