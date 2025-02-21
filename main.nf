@@ -34,9 +34,8 @@ process MKREF {
     maxRetries params.retries
     maxErrors -1
 
-    cpus 1  
+    cpus params.mkrefCpus
     executor 'slurm'
-    queue 'compute_amd'
     time params.mkrefJobLength
     memory params.mkrefMemory
 
@@ -49,7 +48,7 @@ process MKREF {
     script:
     """
 
-    ${params.cellrangerPath}/cellranger mkref --genome=index --fasta=${params.genome} --genes=${params.gtf}
+    ${params.cellrangerPath}/cellranger mkref --genome=index --fasta=${params.genome} --genes=${params.gtf} --nthreads=${params.mkrefCpus}
 
     sleep ${params.sleepTimeEnd}
 
@@ -65,7 +64,6 @@ process CRCOUNT {
 
     cpus params.countJobCpus
     executor 'slurm'
-    queue 'compute_amd'
     time params.countJobLength
     memory params.countJobMemory
 
